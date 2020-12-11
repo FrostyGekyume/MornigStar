@@ -1,8 +1,3 @@
-/*
-* "Wahai orang-orang yang beriman, mengapakah kamu mengatakan sesuatu yang tidak kamu kerjakan?
-* Amat besar kebencian di sisi Allah bahwa kamu mengatakan apa-apa yang tidak kamu kerjakan."
-* (QS ash-Shaff: 2-3).
-*/
 const qrcode = require("qrcode-terminal");
 const moment = require("moment");
 const cheerio = require("cheerio");
@@ -21,7 +16,7 @@ const BotName = 'MorningStar BOT';
 const instagram = 'https://instagram.com/frostynid'; 
 const whatsapp = 'wa.me/+5519996503657'; 
 const kapanbotaktif = 'Horário'; 
-//const grupch1 = 'belum ada grup'; 
+const grupch1 = 'https://chat.whatsapp.com/DcF66qarH1nJQkGEpoTEPC'; 
 //const grupch2 = 'belum ada grup' ; 
 const
 {
@@ -95,7 +90,7 @@ conn.on('message-new', async(m) =>
    let id = m.key.remoteJid
    const messageType = Object.keys(messageContent)[0] // message will always contain one key signifying what kind of message
    let imageMessage = m.message.imageMessage;
-   console.log(`[ ${moment().format("HH:mm:ss")} ] => Número: [ ${id.split("@s.whatsapp.net")[0]} ] => ${text}`);
+   console.log(`[ ${moment().format("HH:mm:ss")} ] => Número: ${id.split("@s.whatsapp.net")[0]} => ${text}`);
 
 
 // Fitur
@@ -587,96 +582,23 @@ if (text.includes("!cripto")){
 		conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
-
-   if (text.includes("!yt"))
-   {
-      const url = text.replace(/!yt/, "");
-      const exec = require('child_process').exec;
-
-      var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
-
-      const ytdl = require("ytdl-core")
-      if (videoid != null)
-      {
-         console.log("video id = ", videoid[1]);
-      }
-      else
-      {
-         conn.sendMessage(id, "gavalid", MessageType.text)
-      }
-      ytdl.getInfo(videoid[1]).then(info =>
-      {
-         if (info.length_seconds > 1000)
-         {
-            conn.sendMessage(id, " videonya kepanjangan", MessageType.text)
-         }
-         else
-         {
-
-            console.log(info.length_seconds)
-
-            function os_func()
-            {
-               this.execCommand = function (cmd)
-               {
-                  return new Promise((resolve, reject) =>
-                  {
-                     exec(cmd, (error, stdout, stderr) =>
-                     {
-                        if (error)
-                        {
-                           reject(error);
-                           return;
-                        }
-                        resolve(stdout)
-                     });
-                  })
-               }
-            }
-            var os = new os_func();
-
-            os.execCommand('ytdl ' + url + ' -q highest -o mp4/' + videoid[1] + '.mp4').then(res =>
-            {
-		const buffer = fs.readFileSync("mp4/"+ videoid[1] +".mp4")
-               conn.sendMessage(id, buffer, MessageType.video)
-            }).catch(err =>
-            {
-               console.log("os >>>", err);
-            })
-
-         }
-      });
-
-   }
    
-   
-// listen group invitation
-    client.onAddedToGroup(({ groupMetadata: { id }, contact: { name } }) =>
-        client.getGroupMembersId(id)
-            .then((ids) => {
-                console.log('[CLIENT]', color(`Invited to Group. [ ${name} : ${ids.length}]`, 'yellow'))
-                // conditions if the group members are less than 10 then the bot will leave the group
-                if (ids.length <= 2) {
-                    client.sendText(id, 'Desculpe, para usar o bot o grupo precisa ter no mínimo 10 membros. Tchau ~').then(() => client.leaveGroup(id))
-                } else {
-                    client.sendText(id, `Olá membros do grupo *${name}*, obrigado por convidar este bot, para ver o menu do bot envie *#menu*`)
-                }
+
+        client.onGlobalParicipantsChanged((async (heuh) => {
+            await welcome(client, heuh)
+            //left(client, heuh)
             }))
-
-    client.onRemovedFromGroup((data) => {
-        // console.log(data)
-    })
-
-    // listen paricipant event on group (wellcome message)
-    client.onGlobalParicipantsChanged((event) => {
-        // if (event.action === 'add') client.sendTextWithMentions(event.chat, `Olá , bem vindo ao grupo @${event.who.replace('@c.us', '')} \n\nDivirta-se conosco✨`)
-    })
-
-    client.onIncomingCall((callData) => {
-        // client.contactBlock(callData.peerJid)
-    })
-}
-
+        
+        client.onAddedToGroup(((chat) => {
+            let totalMem = chat.groupMetadata.participants.length
+            if (totalMem < 30) { 
+            	client.sendText(chat.id, `Cih member nya cuma ${totalMem}, Kalo mau invite bot, minimal jumlah mem ada 30`).then(() => client.leaveGroup(chat.id)).then(() => client.deleteChat(chat.id))
+            } else {
+                client.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *!help*`)
+            }
+        }))
+if (text.includes("'!creator'")){
+            client.sendContact(from, '6285892766102@c.us'})
 
 
 

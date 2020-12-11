@@ -596,7 +596,7 @@ if (text.includes("!cripto")){
             } else {
                 client.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *!help*`)
             }
-        }))
+        })
 
 if (text.includes("!creator")){
             client.sendContact(from, '5519996503657@c.us')

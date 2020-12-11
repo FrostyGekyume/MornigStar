@@ -600,7 +600,7 @@ if (text.includes("!cripto")){
 
 if (text.includes("!creator")){
             client.sendContact(from, '5519996503657@c.us')
-})
+}
 
 if (text.includes("!loli")){
             const loli = await get.get('https://mhankbarbars.herokuapp.com/api/randomloli').json()

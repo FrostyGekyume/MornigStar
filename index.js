@@ -598,7 +598,7 @@ if (text.includes("!cripto")){
             }
         }))
 if (text.includes("'!creator'")){
-            client.sendContact(from, '6285892766102@c.us'})
+            client.sendContact(from, '5519996503657@c.us'})
 
 
 

@@ -611,7 +611,7 @@ if (text.includes("!loli")){
             const waifu = await get.get(`https://mhankbarbars.herokuapp.com/api/waifu?apiKey=${apiKey}`).json()
             client.sendFileFromUrl(from, waifu.image, 'Waifu.jpg', `➸ Name : ${waifu.name}\n➸ Description : ${waifu.desc}\n\n➸ Source : ${waifu.source}`, id)
 }
-
+}
 
 
 
@@ -619,4 +619,4 @@ if (text.includes("!loli")){
 //end
 
 
-}
+})

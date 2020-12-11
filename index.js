@@ -597,9 +597,20 @@ if (text.includes("!cripto")){
                 client.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *!help*`)
             }
         }))
-if (text.includes("'!creator'")){
-            client.sendContact(from, '5519996503657@c.us'})
 
+if (text.includes("!creator")){
+            client.sendContact(from, '5519996503657@c.us')
+})
+
+if (text.includes("!loli")){
+            const loli = await get.get('https://mhankbarbars.herokuapp.com/api/randomloli').json()
+            client.sendFileFromUrl(from, loli.result, 'loli.jpeg', 'Lolinya om', id)
+        })
+
+        if (text.includes("!waifu")){
+            const waifu = await get.get(`https://mhankbarbars.herokuapp.com/api/waifu?apiKey=${apiKey}`).json()
+            client.sendFileFromUrl(from, waifu.image, 'Waifu.jpg', `➸ Name : ${waifu.name}\n➸ Description : ${waifu.desc}\n\n➸ Source : ${waifu.source}`, id)
+})
 
 
 

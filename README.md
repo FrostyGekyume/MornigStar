@@ -35,6 +35,7 @@
 > cd MornigStar
 
 > bash install.sh
+(OBS: Dê "y" Em Todas As Opções Que Aparecerem Para Dar Certo!)
 
 > node index.js
 

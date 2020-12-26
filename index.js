@@ -273,6 +273,7 @@ conn.on('message-new', async(m) =>
 				return false
 			}
 		}
+}
 
 
 // Fitur

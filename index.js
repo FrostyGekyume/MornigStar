@@ -1,5 +1,4 @@
 const qrcode = require("qrcode-terminal");
-const moment = require("moment");
 const cheerio = require("cheerio");
 const imageToBase64 = require('image-to-base64');
 const get = require('got')

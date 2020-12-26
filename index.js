@@ -487,7 +487,6 @@ conn.sendMessage(id, 'ulangi dengan  !pict cewek/cowok\n\nMisal: !pict cowok' ,M
             });
       }
 
-   };
    if (text.includes("!quotes"))
    {
       var url = 'https://jagokata.com/kata-bijak/acak.html'

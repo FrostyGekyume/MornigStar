@@ -272,8 +272,6 @@ conn.on('message-new', async(m) =>
 			} else {
 				return false
 			}
-		} catch (e) {
-			console.log('Error : %s', color(e, 'red'))
 		}
 
 

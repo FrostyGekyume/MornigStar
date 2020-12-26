@@ -675,7 +675,6 @@ if (text.includes("!cripto")){
 		conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
-}
 
 
 

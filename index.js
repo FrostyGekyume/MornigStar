@@ -265,7 +265,6 @@ conn.on('message-new', async(m) =>
 					exec(`ffmpeg -i ${media} ${random}`, (error, stdout, stderr) => {
 						let buffer = fs.readFileSync(random)
 						client.sendMessage(from, buffer, msgType.image, {quoted: mek, caption: 'dah jadi kontol'})
-					}
 
 
 // Fitur

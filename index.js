@@ -18,7 +18,6 @@ const client = new WAConnection()
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
 const kagApi = require('@kagchi/kag-api')
-const fetch = require('node-fetch')
 const imgbb = require('imgbb-uploader')
 const speed = require('performance-now')
 /////////////////
